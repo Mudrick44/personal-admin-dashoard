@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!----===== Boxicons CSS ===== -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- the sidenavbaaar -->
+    <nav class="sidebar close">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <img src="./stay-home.png" alt="" />
+          </span>
+
+          <div class="text logo-text">
+            <span class="name">admin panel</span>
+            <span class="profession">mudrick</span>
+          </div>
+        </div>
+
+        <i class="bx bx-chevron-right toggle"></i>
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+          <li class="search-box">
+            <i class="bx bx-search icon"></i>
+            <input type="text" placeholder="Search ..." />
+          </li>
+
+          <ul class="menu-links">
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-home-alt icon"></i>
+                <span class="text nav-text">Dashboard</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-bar-chart-alt-2 icon"></i>
+                <span class="text nav-text">create project</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-bell icon"></i>
+                <span class="text nav-text">Notifications</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-pie-chart-alt icon"></i>
+                <span class="text nav-text">Analytics</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-heart icon"></i>
+                <span class="text nav-text">projects</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-wallet icon"></i>
+                <span class="text nav-text">Notes</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bottom-content">
+          <li class="">
+            <a href="#">
+              <i class="bx bx-log-out icon"></i>
+              <span class="text nav-text">Logout</span>
+            </a>
+          </li>
+
+          <li class="mode">
+            <div class="sun-moon">
+              <i class="bx bx-moon icon moon"></i>
+              <i class="bx bx-sun icon sun"></i>
+            </div>
+            <span class="mode-text text">Dark mode</span>
+
+            <div class="toggle-switch">
+              <span class="switch"></span>
+            </div>
+          </li>
+        </div>
+      </div>
+    </nav>
+
+    <section class="home">
+      <div class="text">Welcome back mudrick</div>
+      <div class="progress">
+        You have <span id="itemCountDisplay"></span> task to be completed to
+        reach your weekly goal <br />keep going to achieve your goal
+      </div>
+      <button id="myBtn" class="button">Create project</button>
+      <div class="widget">
+        <div class="left-panel">
+          <div class="left-panel-section">
+            <div>
+              <div class="quote-header">Inspiration for you today</div>
+              <div id="welcome-quote">
+                <span class="quote">"</span>Everyday life is like programming, I
+                guess. If you love something, you can put beauty into it
+                <span class="quote">"</span>
+              </div>
+
+              <div>
+                <button id="quote-button" style="vertical-align: middle">
+                  more
+                </button>
+              </div>
+            </div>
+            <div>
+              <div class="left-panel-img">
+                <img src="stay-home.png" width="105px" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="left-panel">
+          <div class="time-container">
+            <button class="button" onclick="setTime(25)">Focus</button>
+            <button class="button" onclick="setTime(5)">Short Break</button>
+            <div id="timer">25:00</div>
+            <button class="button" onclick="startTimer()">Start</button>
+            <button class="button" onclick="pauseTimer()">Pause</button>
+            <button class="button" onclick="resetTimer()">Reset</button>
+          </div>
+        </div>
+      </div>
+      <div class="second-panel">
+        <div class="todo-container">
+          <div>
+            <h1>Tasks todo</h1>
+          </div>
+          <div>
+            <input
+              type="text"
+              class="main-input"
+              placeholder="add task"
+              id="input-task"
+            />
+            <button id="addTask">add</button>
+            <div id="output-task"></div>
+          </div>
+        </div>
+        <div class="note-container">
+          <div><h1>notebook</h1></div>
+          <div>
+            <input
+              type="text"
+              id="note"
+              placeholder="add notes"
+              class="main-input"
+            />
+            <button id="addNote">add note</button>
+            <div id="noteDisplay"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- projects section -->
+      <div class="third-wrapper">
+        <div class="project-wrapper">
+          <div class="project-container">
+            <div class="project-header">
+              <h2>Project stats</h2>
+            </div>
+            <div class="project-stats">
+              <div class="stat stats-container-completed">
+                <div>Completed</div>
+                <div><span class="number">12</span>projects</div>
+              </div>
+              <div class="stat stats-container-pending">
+                <div>pending</div>
+                <div><span class="number">5</span>projects</div>
+              </div>
+            </div>
+            <div class="project-stats-row">
+              <div class="stat stats-container-deployed">
+                <div>Deployed</div>
+                <div><span class="number">10</span>projects</div>
+              </div>
+              <div class="stat stats-container-collabs">
+                <div>Collabs</div>
+                <div><span class="number">10</span>projects</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="email-wrapper">
+          <div class="email-container" id="emails">
+            <div><h2 class="email-header">E-mails</h2></div>
+          </div>
+        </div>
+      </div>
+      <!--  Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Create project</h2>
+
+            <button id="closed" class="close">
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAZ1JREFUWEft1j1rVUEQxvHf1YgR8lUCCrFJkzQmgq1aKILYCJIUKQOCIARSpkgXIRDBl0YLUQxYaJrkMwQ/hpDSMHCOHA73ui8IXuVsd87uzPz3md2ZHZmyMZoyHgNQKiODQoNCKQVS8//8GVrCt9QuO/MzuI7jXJsShR7gADvYyAhwEe9wE6v4mmGTXRhX8Jlf67fw9DcBAuYV7jZrfuAavqegchW6gi9Y7Dh8hudjAlzAW9zuzL3BPfz8U0DhJ6A+YbnjNFIXKWxHwERa73f+xffDHJiwyVWo9X+5Sd04qPD1sgezh8e5MDVAYTOL981hbUHXMN8Eb//tYj2Vov58qUKt/SV8xI0JAatgahXqQoVSt3pQ1TD/FdBUpSxu2ofe+XmCBTzqpK/4htWkLHXtX/SgimpQKVBOYRxXi4qgcq/9HA57rWMT23+rdUS9CaB2A9HDopdNGtFcX+NOs+AMV3GaKpS5CoWf6Ef7lc+P2NBRCqb0DMX6mgda3L6THJgaoFy/1etKUlYdpMRwAEqpNSg0KJRSIDU/dWfoHHDJQyXkGo26AAAAAElFTkSuQmCC"
+              />
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="projectForm">
+              <label for="projectTitle">Project Title:</label>
+              <input
+                type="text"
+                id="projectTitle"
+                name="projectTitle"
+                required
+              />
+
+              <label for="projectDescription">Project Description:</label>
+              <textarea
+                id="projectDescription"
+                name="projectDescription"
+                rows="4"
+                required
+              ></textarea>
+
+              <label for="startDate">Start Date:</label>
+              <input type="date" id="startDate" name="startDate" required />
+
+              <label for="deadlineDate">Deadline Date:</label>
+              <input
+                type="date"
+                id="deadlineDate"
+                name="deadlineDate"
+                required
+              />
+
+              <button type="button" class="projectbtn" id="projectbtn">
+                Create project
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" id="project-card"></div>
+    </section>
+
+    <script src="app.js"></script>
+  </body>
+</html>
